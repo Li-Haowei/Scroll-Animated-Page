@@ -22,7 +22,7 @@ function gotoSection(index, direction) {
         defaults: {duration: 1.25, ease: "power1.inOut"},
         onComplete: () => animating = false,
       });
-  if (currentIndex >= 0) { // The first time this function runs, current is -1
+  if (currentIndex >= 0) { 
     gsap.set(sections[currentIndex], { zIndex: 0 });
     tl.to(images[currentIndex], { yPercent: -15 * dFactor })
       .set(sections[currentIndex], { autoAlpha: 0 });
@@ -30,14 +30,14 @@ function gotoSection(index, direction) {
   gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
   tl.fromTo([outerWrappers[index], innerWrappers[index]], {yPercent: i => i ? -100 * dFactor : 100 * dFactor}, { yPercent: 0 }, 0)
     .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-    .fromTo(splitHeadings[index].chars, {autoAlpha: 0, yPercent: 150 * dFactor}, {
+    .fromTo(splitHeadings[index].chars, {autoAlpha: 100, yPercent: 150 * dFactor}, {
         autoAlpha: 1,
         yPercent: 0,
-        duration: 1,
-        ease: "power2",
+        duration: 2,
+        ease: "power1",
         stagger: {
-          each: 0.02,
-          from: "random"
+          each: 0.05,
+          from: "center"
         }
       }, 0.2);
   
